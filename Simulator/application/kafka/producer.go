@@ -7,8 +7,8 @@ import (
 )
 
 func NewKafkaProducer() *ckafka.Producer {
-	congifMap := &ckafka.ConfigMap{
-		"bootstrap.servers": os.Getenv("KafkaBootstrapServers")
+	configMap := &ckafka.ConfigMap{
+		"bootstrap.servers": os.Getenv("KafkaBootstrapServers"),
 	}
 	p, err := ckafka.NewProducer(configMap)
 	if err != nil {
@@ -19,7 +19,7 @@ func NewKafkaProducer() *ckafka.Producer {
 
 func Publish(msg string, topic string, producer *ckafka.Producer) error {
 	message := &ckafka.Message{
-		TopicPartition: ckafka.TopicPartition{Topic: &tpic, Partition: ckafka.PartitionAny},
+		TopicPartition: ckafka.TopicPartition{Topic: &topic, Partition: ckafka.PartitionAny},
 		Value: 					[]byte(msg),
 	}
 	err := producer.Produce(message, nil)
