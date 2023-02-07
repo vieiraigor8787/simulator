@@ -27,6 +27,10 @@ type PartialRoutePosition struct {
 	Finished bool `json:"finished"`
 }
 
+func NewRoute() *Route {
+	return &Route{}
+}
+
 //setar métodos
 func(r *Route) LoadPositions() error {
 	//carregar posições

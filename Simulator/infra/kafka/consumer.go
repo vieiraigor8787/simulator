@@ -29,7 +29,7 @@ func(k *KafkaConsumer) Consume() {
 	}
 	topics := []string{os.Getenv("KafkaReadTopic")}
 	c.SubscribeTopics(topics, nil)
-	fmt.Println("kafka consumer has benn started")
+	fmt.Println("kafka consumer has been started")
 	for {
 		msg, err := c.ReadMessage(-1)
 		if err == nil {
